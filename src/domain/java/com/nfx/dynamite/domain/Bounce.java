@@ -18,17 +18,26 @@
 package com.nfx.dynamite.domain;
 
 /**
- * How a thrown bundle meets a surface: it bounces, losing most of its speed
- * into the surface and some along it, and once it is barely moving on a
- * floor it comes to rest and lies there with its fuse burning.
+ * How a thrown bundle meets a surface: it thuds, losing nearly all of its
+ * speed into the surface and most of it along the surface, so a hard throw
+ * ends in one small hop and a short tumble, and once it is barely moving on
+ * a floor it comes to rest and lies there with its fuse burning.
+ *
+ * <p>The numbers were set against the game's own projectile tick (drag 0.99,
+ * gravity 0.03, the bundle moved to the point of contact before it
+ * reflects): a full-speed throw at any angle hops at most a fifth of a
+ * block, tumbles under a block and a half, and lies still within eight
+ * ticks of landing. {@code LandingTest} holds that measurement. The first
+ * cut (0.35 and 0.45) hopped two blocks and skidded thirteen: "way too
+ * bouncy".
  */
 public final class Bounce {
     private Bounce() {}
 
-    /** How much of the speed into a surface comes back out of it. */
-    public static final double RESTITUTION = 0.35;
-    /** How much of the speed along a surface survives the bounce: a paper bundle skids little. */
-    public static final double FRICTION = 0.45;
+    /** How much of the speed into a surface comes back out of it: a paper bundle barely does. */
+    public static final double RESTITUTION = 0.08;
+    /** How much of the speed along a surface survives the bounce: it tumbles a little, then stops. */
+    public static final double FRICTION = 0.2;
     /** Below this speed, in blocks per tick, a bundle on a floor stops. */
     public static final double REST_SPEED = 0.08;
 

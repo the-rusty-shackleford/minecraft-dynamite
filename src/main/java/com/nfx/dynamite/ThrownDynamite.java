@@ -112,11 +112,29 @@ public final class ThrownDynamite extends ThrowableItemProjectile {
         }
     }
 
+    /** How far off a face a bundle is set, so it is not inside the block. */
+    private static final double OFF_FACE = 0.001;
+
     @Override
     protected void onHitBlock(BlockHitResult result) {
         super.onHitBlock(result);
         Direction face = result.getDirection();
-        bounce(face.getStepX(), face.getStepY(), face.getStepZ());
+        int nx = face.getStepX();
+        int ny = face.getStepY();
+        int nz = face.getStepZ();
+        // The game finds the hit along this tick's move and leaves the bundle
+        // where the tick began, up to a whole tick's travel short of the
+        // surface; reflected from there, a fast bundle would seem to bounce
+        // off thin air a block up. So it is set at the point of contact first,
+        // its box resting on the face, and reflects from there.
+        // The hit is found along a ray from the position, the box's bottom
+        // centre, so on a floor the position is the contact point; on a
+        // ceiling the box is lowered by its height, at a wall pushed out by
+        // half its width.
+        Vec3 hit = result.getLocation();
+        double out = ny > 0 ? OFF_FACE : ny < 0 ? getBbHeight() + OFF_FACE : getBbWidth() / 2.0 + OFF_FACE;
+        setPos(hit.x + nx * out, hit.y + ny * out, hit.z + nz * out);
+        bounce(nx, ny, nz);
     }
 
     @Override

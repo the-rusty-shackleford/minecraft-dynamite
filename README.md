@@ -15,9 +15,10 @@ power of a block of TNT.
 - **Thrown** like a snowball, a little over a block a tick, with a short
   cooldown between throws. A dispenser throws it lit too.
 - **The fuse is a timer, not a trigger.** The bundle does not go off on
-  impact; it bounces off what it hits -- a third of its speed back out of a
-  surface, under half of its slide kept -- and lies still on a floor once it
-  is barely moving. Two seconds after the throw, it goes off.
+  impact; it thuds down where it hits -- a twelfth of its speed back out of
+  a surface, a fifth of its slide kept, so a hard throw ends in one small
+  hop and a tumble of a block or so -- and lies still on a floor once it is
+  barely moving. Two seconds after the throw, it goes off.
 - **The blast** is the game's own explosion at power 2 (TNT is 4): about a
   three-block reach through air, a shallow crater in dirt, a block or so
   into stone, blocks dropping at TNT's rate, no fire, damage to whatever
@@ -44,8 +45,16 @@ Needed on the server and on every client: the bundle in flight is an entity.
 
 `ThrownDynamite` is a `ThrowableItemProjectile` that does not break on
 impact: its block and entity hits go through the domain's `Bounce`, which
-reflects the speed into the surface at a third and keeps under half of the
-slide, and declares the bundle at rest on a floor below a small speed. Each
+reflects the speed into the surface at 0.08 and keeps 0.2 of the slide, and
+declares the bundle at rest on a floor below a small speed. On a block hit
+the bundle is first set at the point of contact, its box against the face:
+the game finds a hit along the tick's move and leaves the projectile where
+the tick began, up to a whole tick's travel short of the surface, and a
+fast bundle reflected from there looked like it bounced off thin air a
+block up whatever the restitution. `LandingTest` plays the game's own tick
+(drag 0.99, gravity 0.03) over a floor to hold the landing to one hop under
+a fifth of a block, a tumble under a block and a half, and rest within
+eight ticks, at four throw angles; a gametest checks the game agrees. Each
 server tick the domain's `Fuse` says whether it hisses (every ten ticks, the
 sound being a little longer, so the hisses run on) and whether it is due;
 when it is, the level explodes at the bundle with the configured power and

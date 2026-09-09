@@ -32,7 +32,7 @@ import org.junit.jupiter.api.Test;
 final class BounceTest {
 
     @Test
-    void aBundleThrownDownAtAFloorComesBackUpAtAThirdOfItsSpeed() {
+    void aBundleThrownDownAtAFloorComesBackUpAtALittleOfItsSpeed() {
         Bounce.Result r = Bounce.off(0.0, -1.0, 0.0, 0, 1, 0);
         assertEquals(0.0, r.vx(), 1e-9);
         assertEquals(Bounce.RESTITUTION, r.vy(), 1e-9);
@@ -41,7 +41,7 @@ final class BounceTest {
     }
 
     @Test
-    void aGlancingHitKeepsMostOfItsSlideAndLittleOfItsDrop() {
+    void aGlancingHitKeepsAFifthOfItsSlideAndLittleOfItsDrop() {
         Bounce.Result r = Bounce.off(1.0, -0.5, 0.2, 0, 1, 0);
         assertEquals(1.0 * Bounce.FRICTION, r.vx(), 1e-9);
         assertEquals(0.5 * Bounce.RESTITUTION, r.vy(), 1e-9);

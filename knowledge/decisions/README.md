@@ -13,3 +13,4 @@ tags: [index]
 | Id | Topic |
 |----|-------|
 | D-0001 | A timer fuse, a bounce instead of a break, half a TNT, the game's own explosion |
+| D-0002 | A thud at the point of contact, measured with the game's own tick |

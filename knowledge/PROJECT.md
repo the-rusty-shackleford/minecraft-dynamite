@@ -15,8 +15,9 @@ github.com/the-rusty-shackleford), in the shared modpack.
 ## Shape
 
 - `domain` (JDK-only, plain JUnit): `Fuse` (goes off / remaining / hisses on
-  a beat), `Bounce` (reflect into a unit-axis normal at 0.35, keep 0.45 of
-  the slide, rest on a floor under 0.08), `Blast` (power, breaksBlocks,
+  a beat), `Bounce` (reflect into a unit-axis normal at 0.08, keep 0.2 of
+  the slide, rest on a floor under 0.08; `LandingTest` measures a full-speed
+  throw's landing with the game's tick, D-0002), `Blast` (power, breaksBlocks,
   reach = 1.3 × power / 0.225 × 0.3).
 - `main`: `Dynamite` (entry: config, registries, dispenser projectile
   behaviour, Combat tab), `DynamiteConfig` (SERVER: fuseTicks 40, power 2,
@@ -35,13 +36,14 @@ github.com/the-rusty-shackleford), in the shared modpack.
 
 ## How it is verified
 
-`./gradlew check`: 12 JUnit tests; the gametest server's seven; the booth's
+`./gradlew check`: 14 JUnit tests; the gametest server's eight; the booth's
 four checks and five photographs.
 
 ## Decisions
 
 D-0001: a timer fuse, bounce not break, half a TNT, the game's own
-explosion.
+explosion. D-0002: a thud at the point of contact, the landing measured
+with the game's own tick (1.0.1, after "way too bouncy").
 
 ## Next
 

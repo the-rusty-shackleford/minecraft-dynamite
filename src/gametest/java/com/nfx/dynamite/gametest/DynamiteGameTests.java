@@ -174,6 +174,44 @@ public final class DynamiteGameTests {
     }
 
     @GameTest(template = "arena", batch = "flight", timeoutTicks = 100)
+    public void aFullSpeedThrowThudsDownAndLiesStillWithinAFewBlocks(GameTestHelper helper) {
+        // A throw from the hand, 30 degrees down at the item's 1.5 blocks a
+        // tick, starting at eye height: it lands two or three blocks out,
+        // hops at most a fifth of a block off the floor, tumbles under a
+        // block and a half, and lies still. LandingTest measures the same
+        // off-game; this is the game agreeing, contact point and all.
+        layFloor(helper);
+        Vec3 at = helper.absoluteVec(new Vec3(1.5, FLOOR + 1.62, MID + 0.5));
+        double floorTop = helper.absolutePos(new BlockPos(0, FLOOR, 0)).getY();
+        ThrownDynamite bundle = new ThrownDynamite(at.x, at.y, at.z, helper.getLevel());
+        bundle.setItem(new ItemStack(ModItems.DYNAMITE.get()));
+        bundle.setDeltaMovement(1.5 * Math.cos(Math.toRadians(30.0)), -1.5 * Math.sin(Math.toRadians(30.0)), 0.0);
+        helper.getLevel().addFreshEntity(bundle);
+        double[] highestAfterLanding = {Double.NEGATIVE_INFINITY};
+        boolean[] landed = {false};
+        for (int t = 1; t <= 40; t++) {
+            helper.runAtTickTime(t, () -> {
+                if (bundle.getY() <= floorTop + 0.01) {
+                    landed[0] = true;
+                }
+                if (landed[0]) {
+                    highestAfterLanding[0] = Math.max(highestAfterLanding[0], bundle.getY() - floorTop);
+                }
+            });
+        }
+        helper.runAtTickTime(41, () -> {
+            helper.assertTrue(bundle.isAlive(), "still lit");
+            helper.assertTrue(landed[0], "it touched the floor");
+            helper.assertTrue(bundle.isResting(), "lying still by now; velocity " + bundle.getDeltaMovement());
+            helper.assertTrue(bundle.getY() <= floorTop + 0.01, "on the floor, not above it: " + (bundle.getY() - floorTop));
+            helper.assertTrue(highestAfterLanding[0] <= 0.3, "no hop over a third of a block after landing: " + highestAfterLanding[0]);
+            double travelled = bundle.getX() - at.x;
+            helper.assertTrue(travelled >= 3.0 && travelled <= 5.5, "landed two or three blocks out and tumbled under a block and a half: " + travelled);
+            helper.succeed();
+        });
+    }
+
+    @GameTest(template = "arena", batch = "flight", timeoutTicks = 100)
     public void aDispenserThrowsALitBundle(GameTestHelper helper) {
         layFloor(helper);
         BlockPos dispenser = new BlockPos(2, FLOOR + 1, MID);
