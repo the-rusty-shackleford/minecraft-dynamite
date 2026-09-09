@@ -1,0 +1,5 @@
+{
+  "throw": { "subtitle": "subtitles.dynamite.throw", "sounds": ["dynamite:throw"] },
+  "fuse": { "subtitle": "subtitles.dynamite.fuse", "sounds": ["dynamite:fuse"] },
+  "land": { "subtitle": "subtitles.dynamite.land", "sounds": ["dynamite:land"] }
+}

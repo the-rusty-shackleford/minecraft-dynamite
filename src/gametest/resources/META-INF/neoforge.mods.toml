@@ -1,0 +1,21 @@
+# The gametests are a mod of their own, loaded by the gametest run and the
+# photo booth only; never shipped.
+modLoader="javafml"
+loaderVersion="[1,)"
+license="AGPL-3.0-or-later"
+
+[[mods]]
+modId="dynamite_gametest"
+version="1.0.0"
+displayName="Dynamite GameTests"
+authors="Rusty Shackleford"
+description='''
+The gametests and the photo booth.
+'''
+
+[[dependencies.dynamite_gametest]]
+    modId="dynamite"
+    type="required"
+    versionRange="[1.0,)"
+    ordering="AFTER"
+    side="BOTH"

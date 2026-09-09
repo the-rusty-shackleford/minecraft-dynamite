@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "group": "dynamite",
+  "ingredients": [
+    { "tag": "c:gunpowders" },
+    { "tag": "c:gunpowders" },
+    { "tag": "c:gunpowders" },
+    { "item": "minecraft:paper" },
+    { "item": "minecraft:paper" },
+    { "tag": "c:strings" }
+  ],
+  "result": { "id": "dynamite:dynamite", "count": 1 }
+}

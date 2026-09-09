@@ -1,0 +1,31 @@
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="${mod_license}"
+issueTrackerURL="https://github.com/the-rusty-shackleford/minecraft-dynamite/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
+authors="Rusty Shackleford"
+description='''
+A three-stick bundle of dynamite you can throw. Lit as it leaves your hand,
+it flies, bounces, comes to rest hissing, and goes off two seconds after the
+throw with half the power of a block of TNT: enough to clear a little area,
+where you aimed it, without laying and lighting a block.
+Crafted from gunpowder, paper and string. Dispensers throw it too.
+'''
+
+[[dependencies.${mod_id}]]
+    modId="neoforge"
+    type="required"
+    versionRange="[${neo_version},)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="minecraft"
+    type="required"
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="BOTH"
