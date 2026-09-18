@@ -31,7 +31,7 @@ power of a block of TNT.
 
 Needed on the server and on every client: the bundle in flight is an entity.
 
-The dedicated Creative tab is a local, unreleased follow-up to 1.0.1. See the
+Version 1.0.2 adds the dedicated Creative tab. See the
 [full-pack tab check](devtools/verification/creative-tab.md).
 
 ## Config

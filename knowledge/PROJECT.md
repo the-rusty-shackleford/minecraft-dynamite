@@ -61,3 +61,10 @@ and search.
 No release or deployment is authorized by this follow-up.
 Validation: 8 real-server GameTests and native full-pack Creative tab navigation/
 item pickup passed; see [evidence](../devtools/verification/creative-tab.md).
+
+## Release authorization — 2026-09-18
+
+Rusty explicitly requested deployment: "Deploy it! I wanna play with it".
+Version 1.0.2 is approved for publication and deployment in pack 1.39.1,
+superseding the Creative-tab release hold above. Existing gameplay and world data
+are preserved. Clean release builds and pack/hash verification gate deployment.
