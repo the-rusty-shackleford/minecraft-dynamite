@@ -50,3 +50,14 @@ with the game's own tick (1.0.1, after "way too bouncy").
 Asked by Rusty 2026-09-09 ("throwable dynamite ... functionally like weaker
 TNT that you can throw like a projectile"; "Don't forget sound effects!"),
 delivered as 1.0.0 the same day.
+
+
+## Dedicated Creative tabs — 2026-09-18, unreleased
+
+Rusty requested a separate Creative inventory page for each item-adding mod, then
+explicitly chose to group all vehicles in Vanilla Wheels.
+The dedicated Dynamite Creative tab exposes the throwable bundle, alongside Combat
+and search.
+No release or deployment is authorized by this follow-up.
+Validation: 8 real-server GameTests and native full-pack Creative tab navigation/
+item pickup passed; see [evidence](../devtools/verification/creative-tab.md).

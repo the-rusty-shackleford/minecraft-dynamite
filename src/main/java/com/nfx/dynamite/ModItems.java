@@ -17,6 +17,10 @@
  */
 package com.nfx.dynamite;
 
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.network.chat.Component;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -27,12 +31,23 @@ public final class ModItems {
     private ModItems() {}
 
     private static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Dynamite.MOD_ID);
+    private static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Dynamite.MOD_ID);
 
     /** Stacks like the other things you throw. */
     public static final DeferredItem<DynamiteItem> DYNAMITE =
             ITEMS.registerItem("dynamite", DynamiteItem::new, new Item.Properties().stacksTo(16));
 
     static void register(IEventBus modBus) {
+        TABS.register(modBus);
         ITEMS.register(modBus);
     }
+
+    /** Every usable Dynamite item in its own Creative inventory tab. */
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> CREATIVE_TAB = TABS.register("main", () -> CreativeModeTab.builder()
+            .title(Component.translatable("itemGroup.dynamite"))
+            .icon(() -> DYNAMITE.get().getDefaultInstance())
+            .displayItems((parameters, output) -> {
+                output.accept(DYNAMITE.get());
+            })
+            .build());
 }

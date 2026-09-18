@@ -3,5 +3,6 @@
   "entity.dynamite.thrown_dynamite": "Dynamite",
   "subtitles.dynamite.throw": "Dynamite thrown",
   "subtitles.dynamite.fuse": "Fuse hisses",
-  "subtitles.dynamite.land": "Dynamite lands"
+  "subtitles.dynamite.land": "Dynamite lands",
+  "itemGroup.dynamite": "Dynamite"
 }

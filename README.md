@@ -11,7 +11,8 @@ wherever it is -- in the air, over a wall, down a hole -- with half the
 power of a block of TNT.
 
 - **Crafted** shapeless from 3 gunpowder, 2 paper and 1 string (the fuse);
-  one bundle. It is in the Combat tab, and any recipe viewer shows it.
+  one bundle. Take it from the **Dynamite** Creative tab or Combat; recipe viewers
+  also show it.
 - **Thrown** like a snowball, a little over a block a tick, with a short
   cooldown between throws. A dispenser throws it lit too.
 - **The fuse is a timer, not a trigger.** The bundle does not go off on
@@ -29,6 +30,9 @@ power of a block of TNT.
   mod's own are cut from CC0 recordings (`devtools/art/sounds/SOURCES.md`).
 
 Needed on the server and on every client: the bundle in flight is an entity.
+
+The dedicated Creative tab is a local, unreleased follow-up to 1.0.1. See the
+[full-pack tab check](devtools/verification/creative-tab.md).
 
 ## Config
 
