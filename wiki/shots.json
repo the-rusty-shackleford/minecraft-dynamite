@@ -1,0 +1,6 @@
+{"shots": [
+  {"from": "run/booth/screenshots/booth-in-hand.png", "to": "img/in-hand.webp", "crop": [0, 60, 854, 480]},
+  {"from": "run/booth/screenshots/booth-lying-lit.png", "to": "img/lying-lit.webp", "crop": [0, 60, 854, 480]},
+  {"from": "run/booth/screenshots/booth-blast.png", "to": "img/blast.webp", "crop": [0, 60, 854, 480]},
+  {"from": "run/booth/screenshots/booth-crater.png", "to": "img/crater.webp", "crop": [0, 60, 854, 480]}
+]}
